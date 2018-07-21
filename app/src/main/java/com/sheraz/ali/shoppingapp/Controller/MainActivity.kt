@@ -1,7 +1,8 @@
-package com.sheraz.ali.shoppingapp
+package com.sheraz.ali.shoppingapp.Controller
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sheraz.ali.shoppingapp.R
 
 class MainActivity : AppCompatActivity() {
 
