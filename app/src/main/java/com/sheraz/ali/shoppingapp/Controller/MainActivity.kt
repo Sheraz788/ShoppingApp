@@ -3,6 +3,7 @@ package com.sheraz.ali.shoppingapp.Controller
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.sheraz.ali.shoppingapp.Adapters.categoryAdapter
 import com.sheraz.ali.shoppingapp.Model.Category
 import com.sheraz.ali.shoppingapp.R
@@ -21,6 +22,14 @@ class MainActivity : AppCompatActivity() {
         adapter = categoryAdapter(this, DataService.categories)
 
         categoryListView.adapter = adapter
+
+
+        categoryListView.setOnItemClickListener { adapterView, view, i, l ->
+
+            val category = DataService.categories[i]
+            Toast.makeText(this, "You cliced on ${category.title} Cell", Toast.LENGTH_LONG).show()
+
+        }
 
     }
 

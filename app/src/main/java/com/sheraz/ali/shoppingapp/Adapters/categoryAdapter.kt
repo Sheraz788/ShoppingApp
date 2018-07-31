@@ -1,6 +1,7 @@
 package com.sheraz.ali.shoppingapp.Adapters
 
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,52 +17,45 @@ import com.sheraz.ali.shoppingapp.R
 class categoryAdapter(context: Context, categories: List<Category>) : BaseAdapter() {
 
     val context = context
-    val categroies = categories
+    val categories = categories
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(positon: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val categoriesView : View
+        val categoriesView: View
         val holder : viewHolder
 
         if(convertView == null){
-
             categoriesView = LayoutInflater.from(context).inflate(R.layout.category_list_1, null)
-
             holder = viewHolder()
-            holder.categoryName = categoriesView.findViewById(R.id.categoryName)
 
+            holder.categoryName = categoriesView.findViewById(R.id.categoryName)
             holder.categoryImage = categoriesView.findViewById(R.id.categoryImage)
 
-            println("First Time")
             categoriesView.tag = holder
-
-        }else{
-
+        }
+        else{
             holder = convertView.tag as viewHolder
             categoriesView = convertView
-            println("Recycle")
-
         }
 
 
-        val category = categroies[position]
+        val category = categories[positon]
 
-        val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
-        holder.categoryImage?.setImageResource(resourceId)
+        val resourceID = context.resources.getIdentifier(category.image, "drawable", context.packageName)
+        holder.categoryImage?.setImageResource(resourceID)
 
         holder.categoryName?.text = category.title
 
-        return  categoriesView
-
+        return categoriesView
     }
 
     override fun getItem(position: Int): Any {
 
-        return categroies[position]
+        return categories[position]
 
     }
 
-    override fun getItemId(position: Int): Long {
+    override fun getItemId(p0: Int): Long {
 
         return 0
 
@@ -69,14 +63,15 @@ class categoryAdapter(context: Context, categories: List<Category>) : BaseAdapte
 
     override fun getCount(): Int {
 
-        return categroies.count()
+        return categories.count()
 
     }
 
-
     private class viewHolder{
+
         var categoryImage : ImageView? = null
         var categoryName : TextView? = null
     }
+
 
 }
